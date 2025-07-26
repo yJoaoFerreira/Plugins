@@ -18,7 +18,11 @@ public class StaticCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         FileConfiguration config = plugin.getConfig();
-        String prefix = ChatColor.translateAlternateColorCodes('&', config.getString("prefix", "§b§l[HaisuuPiece]§r "));
+
+        if (!sender.hasPermission("hp.basic")) {
+            sender.sendMessage(Utils.getPrefix(plugin) + "§cVocê não tem permissão para isso.");
+            return true;
+        }
 
         String messagePath;
         switch (cmd.getName().toLowerCase()) {
@@ -32,15 +36,15 @@ public class StaticCommand implements CommandExecutor {
                 messagePath = "messages.site";
                 break;
             default:
-                sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', config.getString("messages.unknown-command", "Comando desconhecido.")));
+                sender.sendMessage(Utils.getPrefix(plugin) + ChatColor.translateAlternateColorCodes('&', config.getString("messages.unknown-command", "Comando desconhecido.")));
                 return true;
         }
 
         String message = config.getString(messagePath);
         if (message != null && !message.isEmpty()) {
-            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', message));
+            sender.sendMessage(Utils.getPrefix(plugin) + ChatColor.translateAlternateColorCodes('&', message));
         } else {
-            sender.sendMessage(prefix + "Mensagem para '" + cmd.getName() + "' não configurada.");
+            sender.sendMessage(Utils.getPrefix(plugin) + "Mensagem para '" + cmd.getName() + "' não configurada.");
         }
 
         return true;

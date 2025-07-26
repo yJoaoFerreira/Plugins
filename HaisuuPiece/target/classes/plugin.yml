@@ -11,6 +11,7 @@ commands:
       - resource
       - resourcepack
       - rp
+      - texturepack
     permission: hp.basic
     permission-message: You do not have permission!
     usage: /<command>
@@ -29,3 +30,12 @@ commands:
     permission: hp.basic
     permission-message: You do not have permission!
     usage: /<command>
+  hp:
+    description: Comando para administradores e gerentes
+    aliases:
+      - haisuupiece
+      - haisuup
+      - hpiece
+    permission: hp.admin
+    permission-message: You do not have permission!
+    usage: /hp <subcommand>

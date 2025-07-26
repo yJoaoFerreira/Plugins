@@ -13,9 +13,12 @@ public final class Main extends JavaPlugin {
         saveDefaultConfig();
 
         StaticCommand staticCommand = new StaticCommand(this);
+
         getCommand("discord").setExecutor(staticCommand);
         getCommand("textura").setExecutor(staticCommand);
         getCommand("site").setExecutor(staticCommand);
+
+        getCommand("hp").setExecutor(new HPCommand(this));
     }
 
     @Override
