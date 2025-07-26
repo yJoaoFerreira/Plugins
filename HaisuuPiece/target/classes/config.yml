@@ -1,0 +1,12 @@
+# HaisuuPiece Configuration
+
+# Prefixo para todas as mensagens do plugin.
+# Você pode usar códigos de cores do Minecraft com '&'.
+prefix: '&b&l[HaisuuPiece]&r '
+
+# Mensagens para cada comando.
+messages:
+  discord: 'Link do Discord: www.discord.com/seu-servidor'
+  textura: 'Link da textura: www.seusite.com/textura'
+  site: 'Site oficial: www.seusite.com'
+  unknown-command: 'Comando desconhecido.'

@@ -1,5 +1,5 @@
 name: HaisuuPiece
-version: '0.1'
+version: '1.0-SNAPSHOT'
 main: br.com.haisuu.haisuupiece.Main
 api-version: '1.16'
 

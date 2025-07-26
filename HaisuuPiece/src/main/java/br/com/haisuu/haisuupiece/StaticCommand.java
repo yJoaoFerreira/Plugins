@@ -1,33 +1,46 @@
 package br.com.haisuu.haisuupiece;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 
 public class StaticCommand implements CommandExecutor {
+
+    private final Main plugin;
+
+    public StaticCommand(Main plugin) {
+        this.plugin = plugin;
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        String prefix = "§b§l[HaisuuPiece]§r ";
+        FileConfiguration config = plugin.getConfig();
+        String prefix = ChatColor.translateAlternateColorCodes('&', config.getString("prefix", "§b§l[HaisuuPiece]§r "));
 
+        String messagePath;
         switch (cmd.getName().toLowerCase()) {
-
             case "discord":
-                sender.sendMessage(prefix + "Link do Discord: www.discord.com");
+                messagePath = "messages.discord";
                 break;
-
             case "textura":
-                sender.sendMessage(prefix + "Link da textura: www.textura.com");
+                messagePath = "messages.textura";
                 break;
-
             case "site":
-                sender.sendMessage(prefix + "Site oficial: www.site.com");
+                messagePath = "messages.site";
                 break;
-
             default:
-                sender.sendMessage(prefix + "Comando desconhecido.");
-                break;
+                sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', config.getString("messages.unknown-command", "Comando desconhecido.")));
+                return true;
+        }
+
+        String message = config.getString(messagePath);
+        if (message != null && !message.isEmpty()) {
+            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', message));
+        } else {
+            sender.sendMessage(prefix + "Mensagem para '" + cmd.getName() + "' não configurada.");
         }
 
         return true;

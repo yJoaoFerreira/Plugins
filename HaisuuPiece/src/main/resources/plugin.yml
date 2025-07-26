@@ -1,5 +1,5 @@
 name: HaisuuPiece
-version: '0.1'
+version: '${project.version}'
 main: br.com.haisuu.haisuupiece.Main
 api-version: '1.16'
 
