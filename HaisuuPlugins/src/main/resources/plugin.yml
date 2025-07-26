@@ -1,0 +1,3 @@
+name: HaisuuPlugins
+version: '${project.version}'
+main: br.com.haisuu.HaisuuPlugins

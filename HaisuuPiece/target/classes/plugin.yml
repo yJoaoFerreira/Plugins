@@ -1,0 +1,16 @@
+name: HaisuuPiece
+version: '1.0'
+main: br.com.haisuu.haisuupiece.Main
+api-version: '1.16'
+
+commands:
+  textura:
+    description: Envia o link da textura
+    aliases:
+    - texture
+    - resource
+    - resourcepack
+    - rp
+    permission: hp.basic
+    permission-message: You do not have permission!
+    usage: /<command>
